@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free QR Code Generator: no sign-up, never expires · Everyday Toolbox</title>
+  <meta name="description" content="Make a QR code for a link, Wi-Fi, a contact card, WhatsApp and more. Free forever, no account, and your code never expires. Runs entirely in your browser.">
+  <link rel="icon" type="image/png" href="../assets/toolbox.png">
+  <link rel="stylesheet" href="../assets/toolbox.css">
+  <link rel="stylesheet" href="qr.css">
+</head>
+<body>
+  <a class="skip" href="#content-card">Skip to the generator</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../index.html">
+        <img src="../assets/toolbox.png" alt="" width="32" height="32">
+        <span>Everyday Toolbox</span>
+      </a>
+      <nav class="nav" aria-label="Site">
+        <a href="../index.html">All tools</a>
+        <a href="#guide">Guide</a>
+        <a class="nav-optional" href="https://github.com/ElFarchouni/everyday-python-toolbox" data-repo-link>GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="intro">
+      <h1>QR Code Generator</h1>
+      <p class="lead">
+        Make a QR code for a link, your Wi-Fi, a contact card and more.
+        No account, no payment, and your code never expires.
+      </p>
+      <ul class="promises">
+        <li>Free forever</li>
+        <li>No sign-up</li>
+        <li>Never expires</li>
+        <li>Stays on your device</li>
+      </ul>
+    </section>
+
+    <div class="studio">
+
+      <!-- ============================================ 1. content -->
+      <section class="card" id="content-card" aria-labelledby="content-title">
+        <h2 class="step" id="content-title"><span class="step-n">1</span> What should your code do?</h2>
+
+        <div class="chips" role="radiogroup" aria-label="Type of QR code">
+          <label class="chip">
+            <input type="radio" name="type" value="link" checked>
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 15l6-6"/><path d="M11 6l1.5-1.5a4.2 4.2 0 0 1 6 6L17 12"/><path d="M13 18l-1.5 1.5a4.2 4.2 0 0 1-6-6L7 12"/></svg>
+              Link
+            </span>
+          </label>
+          <label class="chip">
+            <input type="radio" name="type" value="text">
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7V5h14v2"/><path d="M12 5v14"/><path d="M9 19h6"/></svg>
+              Text
+            </span>
+          </label>
+          <label class="chip">
+            <input type="radio" name="type" value="wifi">
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9a14 14 0 0 1 19 0"/><path d="M5.8 12.6a9 9 0 0 1 12.4 0"/><path d="M9 16a4.2 4.2 0 0 1 6 0"/><path d="M12 19.5h.01"/></svg>
+              Wi-Fi
+            </span>
+          </label>
+          <label class="chip">
+            <input type="radio" name="type" value="contact">
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20.5a8 8 0 0 1 16 0"/></svg>
+              Contact
+            </span>
+          </label>
+          <label class="chip">
+            <input type="radio" name="type" value="email">
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7l8.5 6.5L20.5 7"/></svg>
+              Email
+            </span>
+          </label>
+          <label class="chip">
+            <input type="radio" name="type" value="phone">
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.2h2"/></svg>
+              Phone
+            </span>
+          </label>
+          <label class="chip">
+            <input type="radio" name="type" value="whatsapp">
+            <span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 1 0 17c-1.5 0-2.9-.4-4.1-1L3.5 20.5l1.1-4.2A8.5 8.5 0 0 1 12 3.5z"/></svg>
+              WhatsApp
+            </span>
+          </label>
+        </div>
+
+        <!-- Link -->
+        <div class="panel" data-panel="link">
+          <label class="field">
+            <span class="label">Website address</span>
+            <input class="input" id="link-url" type="url" inputmode="url" placeholder="https://example.com"
+                   autocomplete="off" autocapitalize="off" spellcheck="false">
+          </label>
+          <p class="hint">Paste any link: a website, a menu, a Google Maps place, a form, a video, a shared file…</p>
+        </div>
+
+        <!-- Text -->
+        <div class="panel" data-panel="text" hidden>
+          <label class="field">
+            <span class="label">Your text</span>
+            <textarea class="input" id="text-body" placeholder="Type the message people will see when they scan"></textarea>
+          </label>
+          <p class="hint">The text is shown on the phone as it is, and it works even without internet. Shorter text makes a code that is easier to scan.</p>
+        </div>
+
+        <!-- Wi-Fi -->
+        <div class="panel" data-panel="wifi" hidden>
+          <div class="grid-2">
+            <label class="field">
+              <span class="label">Network name</span>
+              <input class="input" id="wifi-ssid" type="text" placeholder="My Wi-Fi" autocomplete="off" autocapitalize="off" spellcheck="false">
+            </label>
+            <label class="field">
+              <span class="label">Password</span>
+              <input class="input" id="wifi-pass" type="text" placeholder="Wi-Fi password" autocomplete="off" autocapitalize="off" spellcheck="false">
+            </label>
+            <label class="field">
+              <span class="label">Security</span>
+              <select class="input" id="wifi-sec">
+                <option value="WPA" selected>WPA / WPA2 / WPA3 (most networks)</option>
+                <option value="WEP">WEP (very old routers)</option>
+                <option value="nopass">None (open network)</option>
+              </select>
+            </label>
+            <label class="check check-inline">
+              <input type="checkbox" id="wifi-hidden">
+              <span>This network is hidden</span>
+            </label>
+          </div>
+          <p class="hint">Guests scan the code and join your Wi-Fi without typing anything. Write the name and password exactly: capital letters matter.</p>
+        </div>
+
+        <!-- Contact -->
+        <div class="panel" data-panel="contact" hidden>
+          <div class="grid-2">
+            <label class="field">
+              <span class="label">First name</span>
+              <input class="input" id="c-first" type="text" autocomplete="off">
+            </label>
+            <label class="field">
+              <span class="label">Last name</span>
+              <input class="input" id="c-last" type="text" autocomplete="off">
+            </label>
+            <label class="field">
+              <span class="label">Phone <span class="optional">(optional)</span></span>
+              <input class="input" id="c-phone" type="tel" placeholder="+212 6 12 34 56 78" autocomplete="off">
+            </label>
+            <label class="field">
+              <span class="label">Email <span class="optional">(optional)</span></span>
+              <input class="input" id="c-email" type="email" placeholder="name@example.com" autocomplete="off" autocapitalize="off" spellcheck="false">
+            </label>
+            <label class="field">
+              <span class="label">Company <span class="optional">(optional)</span></span>
+              <input class="input" id="c-org" type="text" autocomplete="off">
+            </label>
+            <label class="field">
+              <span class="label">Job title <span class="optional">(optional)</span></span>
+              <input class="input" id="c-title" type="text" autocomplete="off">
+            </label>
+            <label class="field span-2">
+              <span class="label">Website <span class="optional">(optional)</span></span>
+              <input class="input" id="c-url" type="url" inputmode="url" placeholder="https://example.com" autocomplete="off" autocapitalize="off" spellcheck="false">
+            </label>
+          </div>
+          <p class="hint">Scanning offers to save you as a new contact, with these details already filled in. Perfect for business cards.</p>
+        </div>
+
+        <!-- Email -->
+        <div class="panel" data-panel="email" hidden>
+          <div class="stack">
+            <label class="field">
+              <span class="label">Send to</span>
+              <input class="input" id="mail-to" type="email" placeholder="name@example.com" autocomplete="off" autocapitalize="off" spellcheck="false">
+            </label>
+            <label class="field">
+              <span class="label">Subject <span class="optional">(optional)</span></span>
+              <input class="input" id="mail-subject" type="text" autocomplete="off">
+            </label>
+            <label class="field">
+              <span class="label">Message <span class="optional">(optional)</span></span>
+              <textarea class="input" id="mail-body"></textarea>
+            </label>
+          </div>
+          <p class="hint">Scanning opens a new email to this address, ready to send.</p>
+        </div>
+
+        <!-- Phone -->
+        <div class="panel" data-panel="phone" hidden>
+          <label class="field">
+            <span class="label">Phone number</span>
+            <input class="input" id="tel-number" type="tel" placeholder="+212 6 12 34 56 78" autocomplete="off">
+          </label>
+          <p class="hint">Scanning opens the phone's dialer with this number. Start with the country code (like +212) so it works from anywhere.</p>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="panel" data-panel="whatsapp" hidden>
+          <div class="stack">
+            <label class="field">
+              <span class="label">WhatsApp number</span>
+              <input class="input" id="wa-number" type="tel" placeholder="+212 6 12 34 56 78" autocomplete="off">
+            </label>
+            <label class="field">
+              <span class="label">Message already written for them <span class="optional">(optional)</span></span>
+              <textarea class="input" id="wa-text" placeholder="Hello! I would like to order…"></textarea>
+            </label>
+          </div>
+          <p class="hint">Scanning opens a WhatsApp chat with this number. The country code is required (like +212).</p>
+        </div>
+
+        <p class="field-tip" id="content-tip" role="status" hidden></p>
+      </section>
+
+      <!-- ============================================== 2. style -->
+      <section class="card" id="style-card" aria-labelledby="style-title">
+        <h2 class="step" id="style-title"><span class="step-n">2</span> Choose a look <span class="step-opt">optional</span></h2>
+
+        <fieldset class="group">
+          <legend>Pattern</legend>
+          <div class="tiles">
+            <label class="tile"><input type="radio" name="shape" value="square"><span class="tile-body"><span class="tile-art" data-shape="square"></span><span class="tile-name">Classic</span></span></label>
+            <label class="tile"><input type="radio" name="shape" value="rounded" checked><span class="tile-body"><span class="tile-art" data-shape="rounded"></span><span class="tile-name">Rounded</span></span></label>
+            <label class="tile"><input type="radio" name="shape" value="dots"><span class="tile-body"><span class="tile-art" data-shape="dots"></span><span class="tile-name">Dots</span></span></label>
+            <label class="tile"><input type="radio" name="shape" value="gapped"><span class="tile-body"><span class="tile-art" data-shape="gapped"></span><span class="tile-name">Small squares</span></span></label>
+            <label class="tile"><input type="radio" name="shape" value="vbars"><span class="tile-body"><span class="tile-art" data-shape="vbars"></span><span class="tile-name">Vertical bars</span></span></label>
+            <label class="tile"><input type="radio" name="shape" value="hbars"><span class="tile-body"><span class="tile-art" data-shape="hbars"></span><span class="tile-name">Horizontal bars</span></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="group">
+          <legend>Corners</legend>
+          <div class="tiles">
+            <label class="tile"><input type="radio" name="eye" value="square" checked><span class="tile-body"><span class="tile-art" data-eye="square"></span><span class="tile-name">Square</span></span></label>
+            <label class="tile"><input type="radio" name="eye" value="rounded"><span class="tile-body"><span class="tile-art" data-eye="rounded"></span><span class="tile-name">Rounded</span></span></label>
+            <label class="tile"><input type="radio" name="eye" value="circle"><span class="tile-body"><span class="tile-art" data-eye="circle"></span><span class="tile-name">Circle</span></span></label>
+          </div>
+          <p class="hint">Square corners are the safest choice for printing.</p>
+        </fieldset>
+
+        <fieldset class="group">
+          <legend>Colors</legend>
+
+          <div class="segmented" role="radiogroup" aria-label="Color style">
+            <label><input type="radio" name="fill" value="solid" checked><span>One color</span></label>
+            <label><input type="radio" name="fill" value="gradient"><span>Gradient</span></label>
+          </div>
+
+          <div class="colors">
+            <label class="color">
+              <input type="color" id="color1" value="#000000">
+              <span id="color1-label">Code color</span>
+            </label>
+            <label class="color gradient-only" hidden>
+              <input type="color" id="color2" value="#1f4e79">
+              <span>Second color</span>
+            </label>
+            <label class="color">
+              <input type="color" id="bg" value="#ffffff">
+              <span>Background</span>
+            </label>
+          </div>
+
+          <div class="swatches" id="swatches" role="group" aria-label="Quick code colors">
+            <button type="button" data-color="#000000" style="--c:#000000" aria-label="Black"></button>
+            <button type="button" data-color="#1f4e79" style="--c:#1f4e79" aria-label="Navy blue"></button>
+            <button type="button" data-color="#0b5d4b" style="--c:#0b5d4b" aria-label="Green"></button>
+            <button type="button" data-color="#7a1f3d" style="--c:#7a1f3d" aria-label="Burgundy"></button>
+            <button type="button" data-color="#4a2a8a" style="--c:#4a2a8a" aria-label="Purple"></button>
+            <button type="button" data-color="#a8380f" style="--c:#a8380f" aria-label="Burnt orange"></button>
+            <button type="button" data-color="#3b3f46" style="--c:#3b3f46" aria-label="Dark grey"></button>
+          </div>
+
+          <div class="grid-2 gradient-only" hidden>
+            <label class="field">
+              <span class="label">Gradient direction</span>
+              <select class="input" id="direction">
+                <option value="diagonal" selected>Corner to corner</option>
+                <option value="horizontal">Left to right</option>
+                <option value="vertical">Top to bottom</option>
+                <option value="radial">Centre outwards</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" id="bg-transparent">
+            <span>No background (transparent)</span>
+          </label>
+        </fieldset>
+
+        <fieldset class="group">
+          <legend>Logo in the middle</legend>
+
+          <label class="drop" id="logo-drop">
+            <input class="visually-hidden" type="file" id="logo-file" accept="image/png,image/jpeg,image/svg+xml,image/webp,image/gif">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M4 17l4.5-4.5 3.5 3.5 3-3 5 5"/></svg>
+            <span><strong>Choose an image</strong> or drop it here</span>
+            <span class="drop-sub">PNG, JPG or SVG. A simple logo works best.</span>
+          </label>
+
+          <div class="logo-loaded" id="logo-loaded" hidden>
+            <img id="logo-thumb" alt="">
+            <div class="logo-controls">
+              <span class="logo-name" id="logo-name"></span>
+              <label class="field">
+                <span class="label">Logo size</span>
+                <input type="range" id="logo-size" min="14" max="30" value="22">
+              </label>
+            </div>
+            <button class="btn btn-quiet btn-small" type="button" id="logo-remove">Remove</button>
+          </div>
+
+          <p class="hint error" id="logo-error" role="alert" hidden></p>
+        </fieldset>
+
+        <details class="more">
+          <summary>More options</summary>
+          <div class="grid-2">
+            <label class="field">
+              <span class="label">White margin around the code: <output id="border-out">4</output></span>
+              <input type="range" id="border" min="1" max="10" value="4">
+              <span class="hint">4 is the standard. A smaller margin can make scanning harder.</span>
+            </label>
+            <label class="field">
+              <span class="label">Damage resistance</span>
+              <select class="input" id="ecc">
+                <option value="L">Low (smallest code)</option>
+                <option value="M">Medium</option>
+                <option value="Q" selected>High (recommended)</option>
+                <option value="H">Highest (best for print)</option>
+              </select>
+              <span class="hint" id="ecc-hint">How much of the code can be scratched or covered and still scan.</span>
+            </label>
+          </div>
+        </details>
+      </section>
+
+      <!-- ============================================= 3. result -->
+      <aside class="card result" id="result-card" aria-labelledby="result-title">
+        <h2 class="step" id="result-title"><span class="step-n">3</span> Download</h2>
+
+        <div class="preview is-example" id="preview-box">
+          <div class="preview-art">
+            <div id="preview" role="img" aria-label="Preview of your QR code"></div>
+            <img id="preview-logo" alt="" hidden>
+          </div>
+          <p class="preview-note" id="preview-note">Your QR code will appear here</p>
+        </div>
+
+        <p class="meta" id="meta"></p>
+
+        <ul class="notices" id="notices" aria-live="polite"></ul>
+
+        <div class="actions">
+          <button class="btn" type="button" id="btn-png" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="M7 11l5 5 5-5"/><path d="M5 20h14"/></svg>
+            Download PNG
+          </button>
+          <div class="actions-row">
+            <button class="btn btn-quiet" type="button" id="btn-svg" disabled>Download SVG</button>
+            <button class="btn btn-quiet" type="button" id="btn-copy" disabled>Copy</button>
+          </div>
+        </div>
+        <p class="status" id="status" role="status"></p>
+
+        <div class="grid-2 output-options">
+          <label class="field">
+            <span class="label">Image size</span>
+            <select class="input" id="size">
+              <option value="500">Small · 500 px</option>
+              <option value="1000" selected>Medium · 1000 px</option>
+              <option value="2000">Large · 2000 px</option>
+              <option value="4000">Print · 4000 px</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="label">File name</span>
+            <input class="input" id="filename" type="text" value="qr-code" autocomplete="off" spellcheck="false">
+          </label>
+        </div>
+        <p class="hint"><strong>PNG</strong> for phones, social media and Word. <strong>SVG</strong> for posters and print shops: it stays sharp at any size.</p>
+
+        <div class="inside" id="inside" hidden>
+          <span class="inside-label">Inside your code</span>
+          <code id="encoded"></code>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ================================================== guide -->
+    <section class="guide" id="guide" aria-labelledby="guide-title">
+      <h2 id="guide-title">How to use it</h2>
+      <ol class="how">
+        <li>
+          <h3>Say what the code should do</h3>
+          <p>Pick a type (Link, Wi-Fi, Contact…) and fill in the boxes. The preview updates while you type.</p>
+        </li>
+        <li>
+          <h3>Choose a look, if you like</h3>
+          <p>Change the pattern, the corners and the colors, or add your logo. You can skip this step: the default look scans perfectly.</p>
+        </li>
+        <li>
+          <h3>Download it, then test it</h3>
+          <p>Save the picture, open your phone's camera and point it at the code. If it opens the right thing, you are done.</p>
+        </li>
+      </ol>
+
+      <div class="guide-cols">
+        <div>
+          <h3>Which type should I pick?</h3>
+          <dl class="types">
+            <div><dt>Link</dt><dd>Opens a website, a menu, a map, a form, a video or a shared file.</dd></div>
+            <div><dt>Text</dt><dd>Shows a short message. Works without internet.</dd></div>
+            <div><dt>Wi-Fi</dt><dd>Lets guests join your network without typing the password.</dd></div>
+            <div><dt>Contact</dt><dd>Saves your name, phone and email in their contacts.</dd></div>
+            <div><dt>Email</dt><dd>Opens a new email to you, already addressed.</dd></div>
+            <div><dt>Phone</dt><dd>Dials your number.</dd></div>
+            <div><dt>WhatsApp</dt><dd>Opens a chat with you, with a message already written if you want.</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h3>Before you print</h3>
+          <ul class="checklist">
+            <li>Test the code with two different phones.</li>
+            <li>Keep the code dark and the background light. Light codes on dark backgrounds often fail.</li>
+            <li>Keep the white margin around the code. Scanners need it.</li>
+            <li>Print it at least 2 cm wide. For a poster, make it about one tenth of the distance people will scan from.</li>
+            <li>Use the SVG file for anything large. It never gets blurry.</li>
+            <li>A logo covers part of the code. If scanning gets slow, make the logo smaller.</li>
+            <li>Square corners are read by every scanner. Circle corners work with phone cameras, but some older scanner apps cannot read them.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================== faq -->
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Good to know</h2>
+
+      <details>
+        <summary>Will my QR code stop working one day?</summary>
+        <p>No. Your link or text is written directly into the picture. Nothing depends on this website: once you have downloaded the code it works forever, even if this page disappears.</p>
+      </details>
+      <details>
+        <summary>Why do some websites ask for money after a few days?</summary>
+        <p>Many “free” generators make <em>dynamic</em> codes. The code does not contain your link; it contains a link to <em>their</em> server, which then forwards people to you. When the free trial ends they switch the forwarding off and ask for a subscription, often after you have already printed the code. This tool only makes <em>static</em> codes, with nothing in the middle. You can check: the box “Inside your code” shows exactly what the code contains.</p>
+      </details>
+      <details>
+        <summary>Can I change where the code goes after I print it?</summary>
+        <p>No. That is the one thing a static code cannot do. To change the destination, make a new code. Tip: point the code at a page you control (your website, your link page) and change that page instead.</p>
+      </details>
+      <details>
+        <summary>Where does my information go?</summary>
+        <p>Nowhere. The code is made on your own phone or computer. What you type, and the logo you add, are never uploaded. There is no account, no tracking and no advertising.</p>
+      </details>
+      <details>
+        <summary>My code does not scan. What can I do?</summary>
+        <p>Try these in order: use a dark code color on a white background; choose Square corners and the Classic or Rounded pattern; make the logo smaller or remove it; shorten the content; print the code larger. And always leave the white margin around it.</p>
+      </details>
+      <details>
+        <summary>Can I use these codes for my business?</summary>
+        <p>Yes: on menus, flyers, packaging, business cards, anywhere. They are yours, with no limit on scans and nothing to pay.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Everyday Toolbox. Open source under the MIT license.</span>
+      <a href="https://github.com/ElFarchouni/everyday-python-toolbox" data-repo-link>Source code on GitHub</a>
+    </div>
+  </footer>
+
+  <!-- shortcut shown on small screens while the preview is out of view -->
+  <div class="jump" id="jump" hidden>
+    <div class="jump-thumb" id="jump-thumb" aria-hidden="true"></div>
+    <div class="jump-text">
+      <strong>Your QR code</strong>
+      <span id="jump-state">Live preview</span>
+    </div>
+    <a class="btn btn-small" id="jump-link" href="#result-card">Preview</a>
+  </div>
+
+  <script src="vendor/qrcode-generator.js"></script>
+  <script src="qr-render.js"></script>
+  <script src="qr-app.js"></script>
+  <script src="../assets/site.js"></script>
+</body>
+</html>

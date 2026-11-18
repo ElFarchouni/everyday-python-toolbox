@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Tool outputs: personal, regenerated on use
+qr_codes/Generated_QR_Codes/
+transcription/transcripts/
+transcription/temp_audio/
+pdf_tools/samples/*.pdf
+pdf_tools/samples/*.docx
+
+# Personal files kept next to the tools (documents, folder icons)
+pdf_tools/*.pdf
+pdf_tools/*.docx
+image_tools/*.ico
+image_tools/*.png
+image_tools/*.jpg
+image_tools/*.jpeg
+
+# Personal notes and plans (stay on this computer)
+IDEAS.md
+MORE_IDEAS.md
+
+# Local-only files
+_archive/
+*.drawio
+GitHub_Ultimate_Tricks_and_Tips_Cheatsheet_CWT.pdf
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,24 @@
+# Install everything: pip install -r requirements.txt
+# Each tool's docstring lists the subset it actually needs.
+
+# pdf_tools
+pypdf
+pdf2docx           # pdf_to_word.py
+pymupdf            # article_to_word.py (also installed by pdf2docx)
+python-docx        # article_to_word.py (also installed by pdf2docx)
+reportlab          # only for samples/make_test_pdfs.py
+
+# transcription (also requires FFmpeg on PATH)
+openai-whisper
+yt-dlp
+youtube-transcript-api
+
+# qr_codes
+qrcode[pil]
+Pillow
+
+# ai_chat
+google-genai
+
+# image_tools
+Pillow
